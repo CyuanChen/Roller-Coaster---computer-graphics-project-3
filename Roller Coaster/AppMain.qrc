@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/AppMain">
+        <file>Resources/Icons/pause.ico</file>
+        <file>Resources/Icons/play.ico</file>
+        <file>Resources/Icons/openfile.ico</file>
+        <file>Resources/Icons/savefile.ico</file>
+    </qresource>
+</RCC>
