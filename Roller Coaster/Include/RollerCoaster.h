@@ -77,9 +77,6 @@ protected:
 
 	void updateTrain( float deltatime );
 
-	//query
-	bool Querytest();
-
 	Ogre::Vector3 mDirection;										// Value to move in the correct direction
 	Ogre::Degree ROT_SCALE;
 	float MOVE_SCALE;
@@ -93,8 +90,4 @@ protected:
 
 	// else
 	Ogre::Plane mPlane;												//Invisible plane on which we do the mouse dragging
-
-	//Ray test
-	Ogre::SceneNode* snTar;
-	Ogre::Entity* enTar;
 };
