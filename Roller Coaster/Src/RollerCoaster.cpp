@@ -63,32 +63,6 @@ void RollerCoaster::initTrain()
 }
 
 //-------------------------------------------------------------------------------------
-bool RollerCoaster::Querytest()
-{
-	Ogre::RaySceneQuery *mQuery = mSceneMgr->createRayQuery(Ogre::Ray());
-	Ogre::Vector3 direction =trainNode->getPosition()+
-		trainNode->_getDerivedOrientation()*Ogre::Vector3::UNIT_Z;
-	
-	Ogre::Ray objRay( trainNode->getPosition(),direction);
-
-	mQuery->setRay(objRay);
-
-	Ogre::RaySceneQueryResult &result = mQuery->execute();
-	Ogre::RaySceneQueryResult::iterator iter = result.begin();
-
-	for (iter; iter!=result.end(); iter++)
-	{
-		if((*iter).movable->getName()== "mTarget")
-		{
-			return true;
-		}
-	}
-
-	mQuery->clearResults();
-	return false;
-}
-
-
 void RollerCoaster::initCamera()
 {
 	//==== 使用 SceneManager 創建相機物件 ====//
@@ -122,8 +96,7 @@ void RollerCoaster::initCamera()
 void RollerCoaster::initLight()
 {
 	//==== 設置環境光 ====//
-	//mSceneMgr->setAmbientLight( Ogre::ColourValue(0.5, 0.5, 0.5) );
-	mSceneMgr->setAmbientLight( Ogre::ColourValue(1.0, 1.0, 1.0) );
+	mSceneMgr->setAmbientLight( Ogre::ColourValue(0.5, 0.5, 0.5) );
 
 	//==== 設定陰影型態 ====//
 	mSceneMgr->setShadowTechnique( Ogre::SHADOWTYPE_STENCIL_ADDITIVE );
@@ -138,13 +111,12 @@ void RollerCoaster::initLight()
 void RollerCoaster::initTerrain()
 {
 	//==== 用一個平面當作地形 ====//
-	mPlane =Ogre::Plane(Ogre::Vector3::UNIT_Y,0);
-	//Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 
 	Ogre::MeshManager::getSingleton().createPlane(
 		"ground", 
 		Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		mPlane, 
+		plane, 
 		500, 500, 20, 20, true, 1, 5, 5,
 		Ogre::Vector3::UNIT_Z
 	);
@@ -165,71 +137,14 @@ void RollerCoaster::createScene( void )
 	initLight();
 	initTerrain();
 
-	snTar = mSceneMgr->getRootSceneNode()->createChildSceneNode("aaa");
-	Ogre::Entity *temp =mSceneMgr->createEntity("ogrehead.mesh");
-	enTar = temp->clone ("mTarget");
-	snTar->attachObject(enTar);
-	snTar ->setPosition(0,0,50);
-	snTar ->setScale(0.1,0.1,0.1);
-
-
-	Ogre::SceneNode *sn =mSceneMgr->getRootSceneNode()->createChildSceneNode("aaa");
-	Ogre::ManualObject *mo=mSceneMgr->createManualObject("aaa");
-	mo->begin("Box", Ogre::RenderOperation::OT_TRIANGLE_LIST);
-	//White side-Back
-	 mo->position(1,1,1  );mo->colour(1,0,0);mo->textureCoord(0,0);
-	 mo->position(1,-1,1 );mo->colour(1,0,0);mo->textureCoord(0,1);
-	 mo->position(1,1,-1 );mo->colour(1,0,0);mo->textureCoord(1,0);
-	 mo->position(1,-1,1 );mo->colour(1,0,0);mo->textureCoord(0,1);
-	 mo->position(1,-1,-1);mo->colour(1,0,0);mo->textureCoord(1,1);
-	 mo->position(1,1,-1 );mo->colour(1,0,0);mo->textureCoord(1,0);
 	objControl = new ObjectControl(mSceneMgr, mCamera);
 	objControl->init();
 	mRayScnQuery = mSceneMgr->createRayQuery(Ogre::Ray());
-
-
-	//Ogre::SceneNode *stest=mSceneMgr->getRootSceneNode()->createChildSceneNode("bb");
-	//Ogre::ManualObject *mtest=mSceneMgr->createManualObject("bb");
-	//mtest->position(1,1,1);  mtest->colour(0,1,0); mtest->textureCoord(0,0);
-	//mtest->position(1,1,1);  mtest->colour(0,1,0); mtest->textureCoord(0,0);
-	//mtest->position(1,1,1);  mtest->colour(0,1,0); mtest->textureCoord(0,0);
-	//mtest->position(1,1,1);  mtest->colour(0,1,0); mtest->textureCoord(0,0);
-	//mtest->quad(3,2,1,0);
-	//mtest->setVisible(true);
-	//mtest->end();
-
-
-
-
-
-
-	//enAnim = mSceneMgr->createEntity("Robot","robot.mesh");
-	//mAnimationState =enAnim->getAnimationState("Walk");
-	//mAnimationState ->setLoop(true);
-	//mAnimationState ->setEnabled(true);
-	//snAnim = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	//snAnim->attachObject(enAnim);
-
-
-
-
-
-
-
-
 }
 
 //-------------------------------------------------------------------------------------
 bool RollerCoaster::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
-	//mAnimationState->addTime(evt.timeSinceLastFrame);
-
-	//if(Querytest())
-	//{
-	//	trainNode->translate(trainNode->_getDerivedOrientation() *Ogre::Vector3::UNIT_Z *evt.timeSinceLastFrame);
-	//	
-	//}
-
 	//==== 更新相機位置 ====//
 	if( mDirection!=Ogre::Vector3(0,0,0) && currCamType == eWorld )
 	{
@@ -290,29 +205,6 @@ void RollerCoaster::updateTrain( float deltatime )
 //-------------------------------------------------------------------------------------
 void RollerCoaster::mouseMoveEvent( QMouseEvent *event )
 {
-	lastPos=event->pos();
-	//bLMouseDown = true;
-
-
-
-	float RatioX = float (lastPos.x())/mCamera->getViewport()->getActualWidth();
-	float RatioY = float (lastPos.y())/mCamera->getViewport()->getActualWidth();
-	if(bLMouseDown){
-	using namespace Ogre;
-	Ray mouseRay=mCamera->getCameraToViewportRay(RatioX,RatioY);
-	std::pair<bool, Real>point =mouseRay.intersects(mPlane);
-	if(point.first)
-	{
-		Vector3 pos= mouseRay.getPoint(point.second);
-		SceneNode *tempSn = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-		Entity *tempEn = mSceneMgr->createEntity("ogrehead.mesh");
-		tempSn->attachObject(tempEn);
-		tempSn->setPosition(pos);
-		tempSn->setScale(0.1,0.1,0.1);
-	}
-
-
-	}
 	if( bLMouseDown )
 	{
 		mCurrentObjName = objControl->mouseDragged(

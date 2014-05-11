@@ -48,9 +48,6 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout_2;
     QVBoxLayout *mainLayout;
-    QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout_3;
-    QPushButton *pushButton1;
     QVBoxLayout *verticalLayout;
     QGroupBox *groupCamera;
     QComboBox *comboCamera;
@@ -140,23 +137,6 @@ public:
         mainLayout = new QVBoxLayout();
         mainLayout->setSpacing(6);
         mainLayout->setObjectName(QStringLiteral("mainLayout"));
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        pushButton1 = new QPushButton(centralWidget);
-        pushButton1->setObjectName(QStringLiteral("pushButton1"));
-
-        verticalLayout_3->addWidget(pushButton1);
-
-
-        verticalLayout_2->addLayout(verticalLayout_3);
-
-
-        mainLayout->addLayout(verticalLayout_2);
-
 
         gridLayout_2->addLayout(mainLayout, 0, 0, 1, 1);
 
@@ -255,7 +235,7 @@ public:
         AppMainClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(AppMainClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1024, 22));
+        menuBar->setGeometry(QRect(0, 0, 1024, 21));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuCamera = new QMenu(menuBar);
@@ -312,7 +292,6 @@ public:
         aLine->setText(QApplication::translate("AppMainClass", "Line", 0));
         aTrack->setText(QApplication::translate("AppMainClass", "Track", 0));
         aRoad->setText(QApplication::translate("AppMainClass", "Road", 0));
-        pushButton1->setText(QApplication::translate("AppMainClass", "PushButton", 0));
         groupCamera->setTitle(QApplication::translate("AppMainClass", "Camera", 0));
         comboCamera->clear();
         comboCamera->insertItems(0, QStringList()

@@ -18,8 +18,6 @@ public:
 	// for object control
 	ObjectControl* objControl;
 
-	//query
-	bool Querytest();
 	// train
 	bool bRun;														// enable to run the train
 	float trainU;													// where the train is in parameter space
@@ -78,7 +76,7 @@ protected:
 	void initTerrain();
 
 	void updateTrain( float deltatime );
-	
+
 	Ogre::Vector3 mDirection;										// Value to move in the correct direction
 	Ogre::Degree ROT_SCALE;
 	float MOVE_SCALE;
@@ -89,14 +87,6 @@ protected:
 	bool xKeyPressed;												//Flag for moving objects in XZ direction
 	Ogre::Vector3 realPoint;
 	QPoint lastPos;
-	//test
-	//Ogre::AnimationState *mAnimationState;
-	//Ogre::SceneNode *snAnim;
-	//Ogre::Entity *enAnim;
-
-	//Ray test
-	Ogre::SceneNode *snTar;
-	Ogre::Entity *enTar;
 
 	// else
 	Ogre::Plane mPlane;												//Invisible plane on which we do the mouse dragging
