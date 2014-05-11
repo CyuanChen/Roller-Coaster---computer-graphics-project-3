@@ -61,7 +61,31 @@ void RollerCoaster::initTrain()
 	trainNode->attachObject( ent );
 	trainNode->setScale( 0.1, 0.1, 0.1 );
 }
-
+//-------------------------------------------------------------------------------------
+bool RollerCoaster::Querytest()
+{
+	Ogre::RaySceneQuery *mQuery = mSceneMgr->createRayQuery(Ogre::Ray());
+	Ogre::Vector3 direction =trainNode->getPosition()+
+		trainNode->_getDerivedOrientation()*Ogre::Vector3::UNIT_Z;
+	
+	Ogre::Ray objRay( trainNode->getPosition(),direction);
+ 
+	mQuery->setRay(objRay);
+ 
+	Ogre::RaySceneQueryResult &result = mQuery->execute();
+	Ogre::RaySceneQueryResult::iterator iter = result.begin();
+ 
+	for (iter; iter!=result.end(); iter++)
+	{
+		if((*iter).movable->getName()== "mTarget")
+		{
+			return true;
+		}
+	}
+ 
+	mQuery->clearResults();
+	return false;
+}
 //-------------------------------------------------------------------------------------
 void RollerCoaster::initCamera()
 {
@@ -123,7 +147,7 @@ void RollerCoaster::initTerrain()
 
 	Ogre::Entity* entGround = mSceneMgr->createEntity( "GroundEntity", "ground" );
 	mSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode")->attachObject( entGround );
-	entGround->setMaterialName( "Tiles" );
+	entGround->setMaterialName( "Grass" );
 	entGround->setCastShadows( false );
 }
 
@@ -140,11 +164,24 @@ void RollerCoaster::createScene( void )
 	objControl = new ObjectControl(mSceneMgr, mCamera);
 	objControl->init();
 	mRayScnQuery = mSceneMgr->createRayQuery(Ogre::Ray());
+
+	//Ray Query example
+	snTar = mSceneMgr->getRootSceneNode()->createChildSceneNode("child");
+	Ogre::Entity* temp = mSceneMgr->createEntity("ogrehead.mesh");
+	enTar = temp->clone("mTarget");
+	snTar->attachObject(enTar);
+	snTar->setPosition(0, 0, 50);
+	snTar->setScale(0.1, 0.1, 0.1);
 }
 
 //-------------------------------------------------------------------------------------
 bool RollerCoaster::frameRenderingQueued( const Ogre::FrameEvent& evt )
 {
+	if(Querytest())
+	{
+		trainNode->translate(trainNode->_getDerivedOrientation() *Ogre::Vector3::UNIT_Z *evt.timeSinceLastFrame);
+	}
+
 	//==== 更新相機位置 ====//
 	if( mDirection!=Ogre::Vector3(0,0,0) && currCamType == eWorld )
 	{
