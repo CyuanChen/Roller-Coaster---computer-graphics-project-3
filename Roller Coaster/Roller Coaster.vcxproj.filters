@@ -114,5 +114,8 @@
     <ClInclude Include="Include\Track.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Include\Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

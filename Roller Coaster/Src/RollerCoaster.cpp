@@ -1,6 +1,8 @@
 #include "RollerCoaster.h"
 #include "AppMain.h"
 #include "OgreMovableObject.h"
+#include "Matrix.h"
+#include <stdio.h>
 
 //-------------------------------------------------------------------------------------
 RollerCoaster::RollerCoaster(void):
@@ -560,13 +562,137 @@ void RollerCoaster::planLinear()
 }
 
 void RollerCoaster::planCardinal()
-{
+{	
+	using namespace Ogre;
+	for (int i=0; i<mTrack->getSize(); i++)
+	{
+		int idx[4];
+		for (int k = 0; k < 4; k++) idx[k] = i+k;
 
+		//making loop
+		for (int k = 0; k < 4; k++)
+		{
+			if (idx[k] >= mTrack->getSize()) idx[k] -= mTrack->getSize();
+		}
+
+		Vector3 Pos[4],Ori[4]; 
+
+		for (int k = 0; k < 4; k++)
+		{
+			Pos[k] = Vector3( mTrack->getItem(idx[k]).pos );
+			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
+		}
+
+
+		float M[4][4] = 
+		{
+			{-1.0/2.0,  1.0, -1.0/2.0, 0},
+			{ 3.0/2.0, -5.0/2.0, 0, 1.0},
+			{-3.0/2.0, 2.0 , 1.0/2.0, 0},
+			{1.0/2.0, -1.0/2.0, 0, 0, }
+		};
+
+		// Vector3 temp = startPos;		
+				
+		float segment = 1000;
+
+		// the parameter "t" is j/segment
+		for (float j=0.0f; j<segment; j++)
+		{
+			float T[4][1] = 
+			{
+				(j/segment) * (j/segment) * (j/segment),
+				(j/segment) * (j/segment),
+				(j/segment),
+				1
+			};
+
+			float MT[4][1] = {0};
+
+			mulMatrix441(M, T, MT);
+
+			Vector3 nowPos(Vector3::ZERO);
+			Vector3 nowOri(Vector3::ZERO);
+
+			for (int l = 0; l < 4; l++)
+			{
+				nowPos += Pos[l] * MT[l][0];
+				nowOri += Ori[l] * MT[l][0];
+			}
+
+			CPtrain.push_back(ControlPoint(nowPos, nowOri));
+
+		}
+	}
 }
 
 void RollerCoaster::planCubic()
 {
+	using namespace Ogre;
+	for (int i=0; i<mTrack->getSize(); i++)
+	{
+		int idx[4];
+		for (int k = 0; k < 4; k++) idx[k] = i+k;
 
+		//making loop
+		for (int k = 0; k < 4; k++)
+		{
+			if (idx[k] >= mTrack->getSize()) idx[k] -= mTrack->getSize();
+		}
+
+		Vector3 Pos[4],Ori[4]; 
+
+		for (int k = 0; k < 4; k++)
+		{
+			Pos[k] = Vector3( mTrack->getItem(idx[k]).pos );
+			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
+		}
+
+
+		float M[4][4] = 
+		{
+			{-1, 3, -3, 1},
+			{3, -6, 0, 4},
+			{-3, 3, 3, 1},
+			{1, 0, 0, 0}
+		};
+
+		for (int j = 0; j < 4; j++)
+			for (int k = 0; k < 4; k++)
+				M[j][k] /= 6.0;
+
+		// Vector3 temp = startPos;		
+				
+		float segment = 1000;
+
+		// the parameter "t" is j/segment
+		for (float j=0.0f; j<segment; j++)
+		{
+			float T[4][1] = 
+			{
+				(j/segment) * (j/segment) * (j/segment),
+				(j/segment) * (j/segment),
+				(j/segment),
+				1
+			};
+
+			float MT[4][1] = {0};
+
+			mulMatrix441(M, T, MT);
+
+			Vector3 nowPos(Vector3::ZERO);
+			Vector3 nowOri(Vector3::ZERO);
+
+			for (int l = 0; l < 4; l++)
+			{
+				nowPos += Pos[l] * MT[l][0];
+				nowOri += Ori[l] * MT[l][0];
+			}
+
+			CPtrain.push_back(ControlPoint(nowPos, nowOri));
+
+		}
+	}
 }
 
 void RollerCoaster::renderAFrame()
