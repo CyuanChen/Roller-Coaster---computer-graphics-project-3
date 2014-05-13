@@ -567,11 +567,10 @@ void RollerCoaster::planCardinal()
 	for (int i=0; i<mTrack->getSize(); i++)
 	{
 		int idx[4];
-		for (int k = 0; k < 4; k++) idx[k] = i+k;
-
-		//making loop
-		for (int k = 0; k < 4; k++)
+		for (int k = 0; k < 4; k++) 
 		{
+			idx[k] = i+k;
+			//make loop
 			if (idx[k] >= mTrack->getSize()) idx[k] -= mTrack->getSize();
 		}
 
@@ -583,17 +582,18 @@ void RollerCoaster::planCardinal()
 			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
 		}
 
-
 		float M[4][4] = 
 		{
-			{-1.0/2.0,  1.0, -1.0/2.0, 0},
-			{ 3.0/2.0, -5.0/2.0, 0, 1.0},
-			{-3.0/2.0, 2.0 , 1.0/2.0, 0},
-			{1.0/2.0, -1.0/2.0, 0, 0, }
+			{-1, 2, -1, 0},
+			{3, -5, 0, 2},
+			{-3, 4, 1, 0},
+			{1, -1, 0, 0}
 		};
 
-		// Vector3 temp = startPos;		
-				
+		for (int j = 0; j < 4; j++)
+			for (int k = 0; k < 4; k++)
+				M[j][k] /= 2.0;		
+					
 		float segment = 1000;
 
 		// the parameter "t" is j/segment
@@ -632,11 +632,10 @@ void RollerCoaster::planCubic()
 	for (int i=0; i<mTrack->getSize(); i++)
 	{
 		int idx[4];
-		for (int k = 0; k < 4; k++) idx[k] = i+k;
-
-		//making loop
-		for (int k = 0; k < 4; k++)
+		for (int k = 0; k < 4; k++) 
 		{
+			idx[k] = i+k;
+			//make loop
 			if (idx[k] >= mTrack->getSize()) idx[k] -= mTrack->getSize();
 		}
 
