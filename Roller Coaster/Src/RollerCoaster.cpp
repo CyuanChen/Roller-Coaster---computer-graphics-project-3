@@ -23,7 +23,7 @@ bReplan(false)
 	MOVE_SCALE			= 250;
 	ROT_SCALE			= Ogre::Degree(30.0f);
 	mDirection			= Ogre::Vector3::ZERO;
-	trainSpeed			= 10;
+	trainSpeed			= 7;
 	MAX_TRAIN_SPEED		= 20;
 	setFocusPolicy( Qt::ClickFocus );
 	tension             = 0;
@@ -172,12 +172,12 @@ void RollerCoaster::createScene( void )
 	mRayScnQuery = mSceneMgr->createRayQuery(Ogre::Ray());
 
 	//Ray Query example
-	snTar = mSceneMgr->getRootSceneNode()->createChildSceneNode("child");
-	Ogre::Entity* temp = mSceneMgr->createEntity("ogrehead.mesh");
-	enTar = temp->clone("mTarget");
-	snTar->attachObject(enTar);
-	snTar->setPosition(0, 0, 50);
-	snTar->setScale(0.1, 0.1, 0.1);
+	// snTar = mSceneMgr->getRootSceneNode()->createChildSceneNode("child");
+	// Ogre::Entity* temp = mSceneMgr->createEntity("ogrehead.mesh");
+	// enTar = temp->clone("mTarget");
+	// snTar->attachObject(enTar);
+	// snTar->setPosition(0, 0, 50);
+	// snTar->setScale(0.1, 0.1, 0.1);
 }
 
 //-------------------------------------------------------------------------------------
@@ -215,6 +215,15 @@ void RollerCoaster::updateTrain( float deltatime )
 	if( !bRun || CPtrain.empty() ) return;
 
 	float tmpU = trainU;
+
+	float oldspeed=15;
+	float height= trainNode->getPosition().y;
+	
+	trainSpeed=oldspeed-sqrt(4.9*height);
+	if(trainSpeed>MAX_TRAIN_SPEED)
+		trainSpeed = MAX_TRAIN_SPEED;
+	if(trainSpeed<5)
+		trainSpeed = 5;
 
 	trainU += 0.01f * trainSpeed * deltatime;
 
@@ -515,7 +524,7 @@ void RollerCoaster::drawParallelRails()
 	{
 		trackObj->position(CPtrain[i].pos);
 
-		if ((i % 10) != 0) continue;
+		if ((i % 20) != 0) continue;
 		// set Strings for naming objects
 		std::stringstream num;
 		num << i+1;
@@ -548,10 +557,13 @@ void RollerCoaster::drawParallelRails()
 			up = front.crossProduct(left);
 		}
 		else break;
-		 
+		
+		front.normalise();
+		up.normalise();
+		left.normalise();
 
 		// Setup Cuboids
-		tempR->setCorners(front, -left, up, Ogre::Vector3(10, 10, 10));
+		tempR->setCorners(-left, up, front, Ogre::Vector3(0.1, 0.1, 1));
 		// tempL->setCorners(front, -left, up, Ogre::Vector3(10, 10, 10));
 		
 		// std::cout << "x = " << CPtrain[i].orient.x << "y = " << CPtrain[i].orient.y << "z = " << CPtrain[i].orient.z << std::endl;
@@ -563,8 +575,8 @@ void RollerCoaster::drawParallelRails()
 		// railsNodeL->translate( left);
 
 		// Ogre::Radian nighty = Ogre::Radian(Ogre::Math::DegreesToRadians(90));
-		Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
-		railsNodeR->yaw(fortyfive, Ogre::Node::TS_LOCAL);
+		// Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
+		// railsNodeR->yaw(fortyfive, Ogre::Node::TS_LOCAL);
 
 
 		// railsNodeR->pitch(nighty, Ogre::Node::TS_LOCAL);
@@ -581,6 +593,55 @@ void RollerCoaster::drawParallelRails()
 
 void RollerCoaster::drawRoadRails()
 {
+	trackObj->begin( "BaseWhiteNoLighting", Ogre::RenderOperation::OT_POINT_LIST );
+
+	for (int i = 0; i < CPtrain.size(); i++)
+	{
+		trackObj->position(CPtrain[i].pos);
+
+		if ((i % 10) != 0) continue;
+		// set Strings for naming objects
+		std::stringstream num;
+		num << i+1;
+
+		std::string railsName = "Rails" + num.str();
+
+		// // New Child SceneNode under trackNode
+		Ogre::SceneNode *railsNode = 
+			trackNode->createChildSceneNode(railsName, CPtrain[i].pos);
+
+		// Create Cuboids
+		Cuboid* temp = new Cuboid(railsName);
+
+		Ogre::Vector3 front, up, left;
+
+		if (i < CPtrain.size()-1)
+		{
+			
+			front = CPtrain[i+1].pos - CPtrain[i].pos;
+			up = CPtrain[i].orient;
+			left = up.crossProduct(front);
+			up = front.crossProduct(left);
+		}
+		else break;
+		
+		front.normalise();
+		up.normalise();
+		left.normalise();
+
+		// Setup Cuboids
+		temp->setCorners(front, -left, up, Ogre::Vector3(0.1, 0.2, 0.1));
+
+		railsNode->attachObject(temp);
+
+		railsNode->translate(-left);
+
+		Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
+		railsNode->yaw(fortyfive, Ogre::Node::TS_LOCAL);
+
+	}
+
+	trackObj->end();
 
 }
 
@@ -657,7 +718,6 @@ void RollerCoaster::planCardinal()
 		{
 			Pos[k] = Vector3( mTrack->getItem(idx[k]).pos );
 			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
-			std::cout << "x = " << Ori[k].x << "y = " << Ori[k].y << "z = " << Ori[k].z << std::endl;
 		}
 
 		float M[4][4] = 

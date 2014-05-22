@@ -4,72 +4,72 @@
  *	http://hsw625728.blog.163.com/blog/static/39570728200910823457100/
  */
 #include "Cuboid.h"
+#include <iostream>
 
 Cuboid::Cuboid(const Ogre::String& name): Ogre::ManualObject(name)
 {
-	setRenderQueueGroup(Ogre::RENDER_QUEUE_OVERLAY);
-    clear();
+	// setRenderQueueGroup(Ogre::RENDER_QUEUE_OVERLAY);
+    // clear();
 	begin(name, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 }
 
 Cuboid::~Cuboid(){}
 
-void Cuboid::setCorners(const Ogre::Vector3& right, const Ogre::Vector3& up, const Ogre::Vector3& front, const Ogre::Vector3& size)
+void Cuboid::
+setCorners(const Ogre::Vector3& right, const Ogre::Vector3& up, const Ogre::Vector3& front, const Ogre::Vector3& size)
 {
-	Ogre::Vector3 cord = *(new Ogre::Vector3());
+	Ogre::Vector3 cord = 
+        *(new Ogre::Vector3(right + up + front));
 
-    cord.x = size.x * (right.x + front.x + up.x);
-    cord.y = size.y * (right.y + front.y + up.y);
-    cord.z = size.z * (right.z + front.z + up.z); 
-
+    // std::cout << "x = " << cord.x << "y = " << cord.y << "z = " << cord.z << std::endl;
 	// cord.x = height.x +  width / 2.0;
 	// cord.y = height.y;
 	// cord.z = height.z + length / 2.0;
     
 
-    position(-cord.x, cord.y,-cord.z); normal( 0, cord.y, 0); //textureCoord(0,0); // 0
-    position( cord.x, cord.y,-cord.z); normal( 0, cord.y, 0); //textureCoord(1,0); // 1
-    position( cord.x, cord.y, cord.z); normal( 0, cord.y, 0); //textureCoord(1,1); // 2
-    position(-cord.x, cord.y, cord.z); normal( 0, cord.y, 0); //textureCoord(0,1); // 3
+    position(-cord.x, cord.y,-cord.z); normal(up); //textureCoord(0,0); // 0
+    position( cord.x, cord.y,-cord.z); normal(up); //textureCoord(1,0); // 1
+    position( cord.x, cord.y, cord.z); normal(up); //textureCoord(1,1); // 2
+    position(-cord.x, cord.y, cord.z); normal(up); //textureCoord(0,1); // 3
 
     quad(3,2,1,0);
 
-    position(-cord.x,-cord.y, cord.z); normal( 0,-cord.y, 0); //textureCoord(0,0); // 4
-    position( cord.x,-cord.y, cord.z); normal( 0,-cord.y, 0); //textureCoord(1,0); // 5
-    position( cord.x,-cord.y,-cord.z); normal( 0,-cord.y, 0); //textureCoord(1,1); // 6
-    position(-cord.x,-cord.y,-cord.z); normal( 0,-cord.y, 0); //textureCoord(0,1); // 7
+    position(-cord.x,-cord.y, cord.z); normal(-up); //textureCoord(0,0); // 4
+    position( cord.x,-cord.y, cord.z); normal(-up); //textureCoord(1,0); // 5
+    position( cord.x,-cord.y,-cord.z); normal(-up); //textureCoord(1,1); // 6
+    position(-cord.x,-cord.y,-cord.z); normal(-up); //textureCoord(0,1); // 7
 
     quad(7,6,5,4);
 
-    position( cord.x, cord.y, cord.z); normal( cord.x, 0, 0); //textureCoord(0,0); // 8
-    position( cord.x, cord.y,-cord.z); normal( cord.x, 0, 0); //textureCoord(1,0); // 9
-    position( cord.x,-cord.y,-cord.z); normal( cord.x, 0, 0); //textureCoord(1,1); //10
-    position( cord.x,-cord.y, cord.z); normal( cord.x, 0, 0); //textureCoord(0,1); //11
+    position( cord.x, cord.y, cord.z); normal(right); //textureCoord(0,0); // 8
+    position( cord.x, cord.y,-cord.z); normal(right); //textureCoord(1,0); // 9
+    position( cord.x,-cord.y,-cord.z); normal(right); //textureCoord(1,1); //10
+    position( cord.x,-cord.y, cord.z); normal(right); //textureCoord(0,1); //11
 
     quad(11,10,9,8);
 
-    position(-cord.x, cord.y,-cord.z); normal(-cord.x, 0, 0); //textureCoord(0,0); //12
-    position(-cord.x, cord.y, cord.z); normal(-cord.x, 0, 0); //textureCoord(1,0); //13
-    position(-cord.x,-cord.y, cord.z); normal(-cord.x, 0, 0); //textureCoord(1,1); //14
-    position(-cord.x,-cord.y,-cord.z); normal(-cord.x, 0, 0); //textureCoord(0,1); //15
+    position(-cord.x, cord.y,-cord.z); normal(-right); //textureCoord(0,0); //12
+    position(-cord.x, cord.y, cord.z); normal(-right); //textureCoord(1,0); //13
+    position(-cord.x,-cord.y, cord.z); normal(-right); //textureCoord(1,1); //14
+    position(-cord.x,-cord.y,-cord.z); normal(-right); //textureCoord(0,1); //15
 
     quad(15,14,13,12);
 
-    position( cord.x, cord.y,-cord.z); normal( 0, 0,-cord.z); //textureCoord(0,0); //16
-    position(-cord.x, cord.y,-cord.z); normal( 0, 0,-cord.z); //textureCoord(1,0); //17
-    position(-cord.x,-cord.y,-cord.z); normal( 0, 0,-cord.z); //textureCoord(1,1); //18
-    position( cord.x,-cord.y,-cord.z); normal( 0, 0,-cord.z); //textureCoord(0,1); //19
+    position( cord.x, cord.y,-cord.z); normal(-front); //textureCoord(0,0); //16
+    position(-cord.x, cord.y,-cord.z); normal(-front); //textureCoord(1,0); //17
+    position(-cord.x,-cord.y,-cord.z); normal(-front); //textureCoord(1,1); //18
+    position( cord.x,-cord.y,-cord.z); normal(-front); //textureCoord(0,1); //19
 
     quad(19,18,17,16);
 
-    position(-cord.x, cord.y, cord.z); normal( 0, 0, cord.z); //textureCoord(0,0); //20
-    position( cord.x, cord.y, cord.z); normal( 0, 0, cord.z); //textureCoord(1,0); //21
-    position( cord.x,-cord.y, cord.z); normal( 0, 0, cord.z); //textureCoord(1,1); //22
-    position(-cord.x,-cord.y, cord.z); normal( 0, 0, cord.z); //textureCoord(0,1); //23
+    position(-cord.x, cord.y, cord.z); normal(front); //textureCoord(0,0); //20
+    position( cord.x, cord.y, cord.z); normal(front); //textureCoord(1,0); //21
+    position( cord.x,-cord.y, cord.z); normal(front); //textureCoord(1,1); //22
+    position(-cord.x,-cord.y, cord.z); normal(front); //textureCoord(0,1); //23
 
     quad(23,22,21,20);
 
-    setVisible(true);
+    // setVisible(true);
 
 	// // Vertex
  //    position( -cord.x, -cord.y, -cord.z);  colour(0.0, 0.0, 0.0);  normal(1, 0, 0); //0
