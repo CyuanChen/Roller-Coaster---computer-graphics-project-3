@@ -1,3 +1,6 @@
+#include "OgreVector3.h"
+#include <iostream>
+
 inline void mulMatrix444(float a[][4], float b[][4], float c[][4])
 {
 	for(int i = 0; i < 4; i++)
@@ -57,4 +60,10 @@ inline float mulMatrix441(float a[][4], float b[][1], float c[][1])
 	}
 
 	return c[0][0];
+}
+
+
+inline void printVector(const Ogre::Vector3& v)
+{
+	std::cout<< "x = " << v.x << ", y = " << v.y << ", z = " << v.z << std::endl;
 }

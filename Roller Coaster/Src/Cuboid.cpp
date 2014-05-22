@@ -8,7 +8,7 @@
 
 Cuboid::Cuboid(const Ogre::String& name): Ogre::ManualObject(name)
 {
-	// setRenderQueueGroup(Ogre::RENDER_QUEUE_OVERLAY);
+	setRenderQueueGroup(Ogre::RENDER_QUEUE_OVERLAY);
     // clear();
 	begin(name, Ogre::RenderOperation::OT_TRIANGLE_LIST);
 }
@@ -18,8 +18,7 @@ Cuboid::~Cuboid(){}
 void Cuboid::
 setCorners(const Ogre::Vector3& right, const Ogre::Vector3& up, const Ogre::Vector3& front, const Ogre::Vector3& size)
 {
-	Ogre::Vector3 cord = 
-        *(new Ogre::Vector3(right + up + front));
+	Ogre::Vector3 cord = size.x * right + size.y * up + size.z * front;
 
     // std::cout << "x = " << cord.x << "y = " << cord.y << "z = " << cord.z << std::endl;
 	// cord.x = height.x +  width / 2.0;

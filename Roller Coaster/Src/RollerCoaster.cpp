@@ -524,27 +524,24 @@ void RollerCoaster::drawParallelRails()
 	{
 		trackObj->position(CPtrain[i].pos);
 
-		if ((i % 20) != 0) continue;
+		if ((i % 15) != 0) continue;
 		// set Strings for naming objects
 		std::stringstream num;
 		num << i+1;
 
-		std::string railsRName = "Rrails" + num.str();
-		std::string railsLName = "Lrails" + num.str();
-		std::string railsNodeName  = "RailsNode" + num.str();
+		std::string railsName = "Rails" + num.str();
 
 		// // New Child SceneNode under trackNode
 		// Ogre::SceneNode *railsNode = 
 		// 		trackNode->createChildSceneNode(railsNodeName, CPtrain[i].pos);
 
-		Ogre::SceneNode *railsNodeR = 
-			trackNode->createChildSceneNode(railsRName, CPtrain[i].pos);
+		Ogre::SceneNode *railsNode = 
+			trackNode->createChildSceneNode(railsName, CPtrain[i].pos);
 		// Ogre::SceneNode *railsNodeL = 
 		// 	trackNode->createChildSceneNode(railsLName, CPtrain[i].pos);
 
 		// Create Cuboids
-		Cuboid* tempR = new Cuboid(railsRName);
-		Cuboid* tempL = new Cuboid(railsLName);
+		Cuboid* temp = new Cuboid(railsName);
 
 		Ogre::Vector3 front, up, left;
 
@@ -555,6 +552,7 @@ void RollerCoaster::drawParallelRails()
 			up = CPtrain[i].orient;
 			left = up.crossProduct(front);
 			up = front.crossProduct(left);
+			CPtrain[i].orient = up;
 		}
 		else break;
 		
@@ -562,21 +560,28 @@ void RollerCoaster::drawParallelRails()
 		up.normalise();
 		left.normalise();
 
+		std::cout << "front: ";
+		printVector(front);
+
+		std::cout << "left: ";
+		printVector(left);
+
+		// Why!!???? = =, okay it's computer graphics.
 		// Setup Cuboids
-		tempR->setCorners(-left, up, front, Ogre::Vector3(0.1, 0.1, 1));
+		temp->setCorners(front, -left, up, Ogre::Vector3(0.1, 0.8, 0.1));
 		// tempL->setCorners(front, -left, up, Ogre::Vector3(10, 10, 10));
 		
 		// std::cout << "x = " << CPtrain[i].orient.x << "y = " << CPtrain[i].orient.y << "z = " << CPtrain[i].orient.z << std::endl;
 
-		railsNodeR->attachObject(tempR);
+		railsNode->attachObject(temp);
 		// railsNodeL->attachObject(tempL);
 
-		railsNodeR->translate(-left);
+		// railsNodeR->translate(-left);
 		// railsNodeL->translate( left);
 
 		// Ogre::Radian nighty = Ogre::Radian(Ogre::Math::DegreesToRadians(90));
-		// Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
-		// railsNodeR->yaw(fortyfive, Ogre::Node::TS_LOCAL);
+		Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
+		railsNode->yaw(fortyfive, Ogre::Node::TS_LOCAL);
 
 
 		// railsNodeR->pitch(nighty, Ogre::Node::TS_LOCAL);
@@ -599,19 +604,23 @@ void RollerCoaster::drawRoadRails()
 	{
 		trackObj->position(CPtrain[i].pos);
 
-		if ((i % 10) != 0) continue;
+		if ((i % 7) != 0) continue;
 		// set Strings for naming objects
 		std::stringstream num;
 		num << i+1;
 
 		std::string railsName = "Rails" + num.str();
+		std::string railsNamet = "tRails" + num.str();
 
 		// // New Child SceneNode under trackNode
 		Ogre::SceneNode *railsNode = 
 			trackNode->createChildSceneNode(railsName, CPtrain[i].pos);
+		Ogre::SceneNode *railsNodet = 
+			trackNode->createChildSceneNode(railsNamet, CPtrain[i].pos);			
 
 		// Create Cuboids
 		Cuboid* temp = new Cuboid(railsName);
+		Cuboid* tempt = new Cuboid(railsNamet);
 
 		Ogre::Vector3 front, up, left;
 
@@ -630,14 +639,20 @@ void RollerCoaster::drawRoadRails()
 		left.normalise();
 
 		// Setup Cuboids
-		temp->setCorners(front, -left, up, Ogre::Vector3(0.1, 0.2, 0.1));
+		temp->setCorners(front, -left, up, Ogre::Vector3(0.8, 0.04, 0.04));
+		tempt->setCorners(front, -left, up, Ogre::Vector3(0.8, 0.04, 0.04));
 
 		railsNode->attachObject(temp);
+		railsNodet->attachObject(tempt);
 
-		railsNode->translate(-left);
+		railsNode->translate(left);
+		railsNodet->translate(-left);		
+
+		// railsNode->translate(-left);
 
 		Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
 		railsNode->yaw(fortyfive, Ogre::Node::TS_LOCAL);
+		railsNodet->yaw(fortyfive, Ogre::Node::TS_LOCAL);
 
 	}
 
@@ -809,23 +824,23 @@ void RollerCoaster::planCubic()
 		}
 
 
-		// float M[4][4] = 
-		// {
-		// 	{-1, 3, -3, 1},
-		// 	{3, -6, 0, 4},
-		// 	{-3, 3, 3, 1},
-		// 	{1, 0, 0, 0}
-		// };
-		float t = tension;
-		printf("tension = %f\n", tension);
-
 		float M[4][4] = 
 		{
-			{ -t,  12-9*t,  9*t-12 ,  t },
-			{3*t,  12*t-18,  18-15*t, 0 },
-			{-3*t,   0 ,   3*t  ,  0 },
-			{  t,   6-2*t ,   t  ,  0 }
-		};		
+			{-1, 3, -3, 1},
+			{3, -6, 0, 4},
+			{-3, 3, 3, 1},
+			{1, 0, 0, 0}
+		};
+		float t = tension;
+		// printf("tension = %f\n", tension);
+
+		// float M[4][4] = 
+		// {
+		// 	{ -t,  12-9*t,  9*t-12 ,  t },
+		// 	{3*t,  12*t-18,  18-15*t, 0 },
+		// 	{-3*t,   0 ,   3*t  ,  0 },
+		// 	{  t,   6-2*t ,   t  ,  0 }
+		// };		
 
 		// float sum = 0;
 		// for (int j = 0; j < 4; j++)
