@@ -146,6 +146,23 @@ void RollerCoaster::initLight()
 	Ogre::Light* light = mSceneMgr->createLight( "MainLight" );
 	light->setPosition( 120, 1000, -250 );
 	light->setCastShadows( true );
+	light->setDiffuseColour(0.953, 0.635, 0.196);
+
+	Ogre::Light* pointLight = mSceneMgr->createLight("pointLight");
+    pointLight->setType(Ogre::Light::LT_POINT);
+    pointLight->setPosition(Ogre::Vector3(0, 1, 0));
+ 
+    pointLight->setDiffuseColour(0.5, 0.5, 0.5);
+    pointLight->setSpecularColour(0.6, 0.5, 0.6);
+
+	// Let's play light magic Yeah
+	Ogre::Light* spotlight = mSceneMgr->createLight("spotlight");
+	spotlight->setType(Ogre::Light::LT_SPOTLIGHT);
+	spotlight->setPosition(0, 40, 0);
+	spotlight->setDiffuseColour(0.953, 0.635, 0.196);
+    // spotlight->setSpecularColour(0.953, 0.635, 0.196);
+    spotlight->setDirection(0, -1, 0);
+    spotlight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
 }
 
 //-------------------------------------------------------------------------------------

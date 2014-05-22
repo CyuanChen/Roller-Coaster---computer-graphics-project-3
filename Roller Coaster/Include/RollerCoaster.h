@@ -29,6 +29,7 @@ public:
 	Ogre::SceneNode *trainNode;										// node for train
 	float trainSpeed;
 	float MAX_TRAIN_SPEED;
+	Ogre::Light *trainLight;
 
 	// The track of the entire scene
 	bool bRedraw;													// enable this flag in order to redraw the track with new type of track
