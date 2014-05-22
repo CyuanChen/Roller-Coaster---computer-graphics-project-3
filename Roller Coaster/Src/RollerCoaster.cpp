@@ -3,6 +3,8 @@
 #include "OgreMovableObject.h"
 #include "Matrix.h"
 #include <stdio.h>
+#include <string>
+#include <vector>
 
 //-------------------------------------------------------------------------------------
 RollerCoaster::RollerCoaster(void):
@@ -24,6 +26,8 @@ bReplan(false)
 	trainSpeed			= 10;
 	MAX_TRAIN_SPEED		= 20;
 	setFocusPolicy( Qt::ClickFocus );
+	tension             = 0;
+	MAX_TENSION_VALUE   = 10;
 }
 
 //-------------------------------------------------------------------------------------
@@ -464,6 +468,9 @@ void RollerCoaster::drawTrack( trackType type )
 	// clear the track that have been draw before
 	trackObj->clear();
 
+	// use removeAndDestroyAllChildren to clear all objects under trackNode	
+	trackNode->removeAndDestroyAllChildren();
+
 	switch (type)
 	{
 	case eSimpleTrack:
@@ -488,8 +495,9 @@ void RollerCoaster::drawSimpleTrack()
 
 	for ( int i=0; i<CPtrain.size(); i++ )
 	{
-		int j = i + 1;
-		if ( j == CPtrain.size() ) j = 0;
+		// useless code, uhh?
+		// int j = i + 1;
+		// if ( j == CPtrain.size() ) j = 0;
 		
 		trackObj->position(CPtrain[i].pos);
 	}
@@ -499,7 +507,76 @@ void RollerCoaster::drawSimpleTrack()
 
 void RollerCoaster::drawParallelRails()
 {
-	
+	// CPtrain[i].orient.y as UP normal
+	// std::vector<Cuboid> CBList;
+	trackObj->begin( "BaseWhiteNoLighting", Ogre::RenderOperation::OT_POINT_LIST );
+
+	for (int i = 0; i < CPtrain.size(); i++)
+	{
+		trackObj->position(CPtrain[i].pos);
+
+		if ((i % 10) != 0) continue;
+		// set Strings for naming objects
+		std::stringstream num;
+		num << i+1;
+
+		std::string railsRName = "Rrails" + num.str();
+		std::string railsLName = "Lrails" + num.str();
+		std::string railsNodeName  = "RailsNode" + num.str();
+
+		// // New Child SceneNode under trackNode
+		// Ogre::SceneNode *railsNode = 
+		// 		trackNode->createChildSceneNode(railsNodeName, CPtrain[i].pos);
+
+		Ogre::SceneNode *railsNodeR = 
+			trackNode->createChildSceneNode(railsRName, CPtrain[i].pos);
+		// Ogre::SceneNode *railsNodeL = 
+		// 	trackNode->createChildSceneNode(railsLName, CPtrain[i].pos);
+
+		// Create Cuboids
+		Cuboid* tempR = new Cuboid(railsRName);
+		Cuboid* tempL = new Cuboid(railsLName);
+
+		Ogre::Vector3 front, up, left;
+
+		if (i < CPtrain.size()-1)
+		{
+			
+			front = CPtrain[i+1].pos - CPtrain[i].pos;
+			up = CPtrain[i].orient;
+			left = up.crossProduct(front);
+			up = front.crossProduct(left);
+		}
+		else break;
+		 
+
+		// Setup Cuboids
+		tempR->setCorners(front, -left, up, Ogre::Vector3(10, 10, 10));
+		// tempL->setCorners(front, -left, up, Ogre::Vector3(10, 10, 10));
+		
+		// std::cout << "x = " << CPtrain[i].orient.x << "y = " << CPtrain[i].orient.y << "z = " << CPtrain[i].orient.z << std::endl;
+
+		railsNodeR->attachObject(tempR);
+		// railsNodeL->attachObject(tempL);
+
+		railsNodeR->translate(-left);
+		// railsNodeL->translate( left);
+
+		// Ogre::Radian nighty = Ogre::Radian(Ogre::Math::DegreesToRadians(90));
+		Ogre::Radian fortyfive = Ogre::Radian(Ogre::Math::DegreesToRadians(-45));
+		railsNodeR->yaw(fortyfive, Ogre::Node::TS_LOCAL);
+
+
+		// railsNodeR->pitch(nighty, Ogre::Node::TS_LOCAL);
+		// railsNodeL->pitch(nighty, Ogre::Node::TS_LOCAL);
+
+		// railsNodeR->roll(fortyfive, Ogre::Node::TS_LOCAL);
+		// railsNodeL->roll(fortyfive, Ogre::Node::TS_LOCAL);
+
+	}
+
+	trackObj->end();
+
 }
 
 void RollerCoaster::drawRoadRails()
@@ -580,6 +657,7 @@ void RollerCoaster::planCardinal()
 		{
 			Pos[k] = Vector3( mTrack->getItem(idx[k]).pos );
 			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
+			std::cout << "x = " << Ori[k].x << "y = " << Ori[k].y << "z = " << Ori[k].z << std::endl;
 		}
 
 		float M[4][4] = 
@@ -590,9 +668,32 @@ void RollerCoaster::planCardinal()
 			{1, -1, 0, 0}
 		};
 
+		// float t = tension;
+
+		// float M[4][4] = 
+		// {
+		// 	{ -t,  2-t,  t-2 ,  t },
+		// 	{2*t,  t-3,  3-2*t, -t },
+		// 	{ -t,   0 ,   t  ,  0 },
+		// 	{  0,   1 ,   0  ,  0 }
+		// };
+
+		// float sum = 0;
+		// for (int j = 0; j < 4; j++)
+		// {
+		// 	for (int k = 0; k < 4; k++)
+		// 	{
+		// 		sum += M[j][k];		
+		// 	}
+		// }
+
 		for (int j = 0; j < 4; j++)
+		{
 			for (int k = 0; k < 4; k++)
+			{
 				M[j][k] /= 2.0;		
+			}
+		}
 					
 		float segment = 1000;
 
@@ -648,17 +749,43 @@ void RollerCoaster::planCubic()
 		}
 
 
+		// float M[4][4] = 
+		// {
+		// 	{-1, 3, -3, 1},
+		// 	{3, -6, 0, 4},
+		// 	{-3, 3, 3, 1},
+		// 	{1, 0, 0, 0}
+		// };
+		float t = tension;
+		printf("tension = %f\n", tension);
+
 		float M[4][4] = 
 		{
-			{-1, 3, -3, 1},
-			{3, -6, 0, 4},
-			{-3, 3, 3, 1},
-			{1, 0, 0, 0}
-		};
+			{ -t,  12-9*t,  9*t-12 ,  t },
+			{3*t,  12*t-18,  18-15*t, 0 },
+			{-3*t,   0 ,   3*t  ,  0 },
+			{  t,   6-2*t ,   t  ,  0 }
+		};		
+
+		// float sum = 0;
+		// for (int j = 0; j < 4; j++)
+		// {
+		// 	for (int k = 0; k < 4; k++)
+		// 	{
+		// 		sum += M[j][k];		
+		// 	}
+		// }
 
 		for (int j = 0; j < 4; j++)
+		{
 			for (int k = 0; k < 4; k++)
-				M[j][k] /= 6.0;
+			{
+				M[j][k] /= 6.0;	
+				printf("%.2f\t", M[j][k]);	
+			}
+			printf("\n");
+		}
+		//printf("sum = %d\n", sum);
 
 		// Vector3 temp = startPos;		
 				

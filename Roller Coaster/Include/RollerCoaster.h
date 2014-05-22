@@ -3,6 +3,7 @@
 #include "OgreWidget.h"
 #include "ObjectControl.h"
 #include "Track.h"
+#include "Cuboid.h"
 
 class RollerCoaster : public OgreWidget
 {
@@ -45,6 +46,10 @@ public:
 	void planLinear();
 	void planCardinal();
 	void planCubic();
+
+	//track
+	float tension;
+	float MAX_TENSION_VALUE;
 
 	// Change the view of camera
 	Ogre::Viewport* mViewPort;

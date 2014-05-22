@@ -59,6 +59,8 @@ private slots:
 	void DeleteControlPoint();
 
 	void CallNextFrame();
+
+	void ChangeTensionOfTrack(int val);
 };
 
 #endif // APPMAIN_H

@@ -224,6 +224,47 @@
        </widget>
       </item>
       <item>
+       <widget class="QGroupBox" name="groupTension">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>70</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>Tension</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <widget class="QSlider" name="sTension">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>160</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <property name="minimum">
+          <number>-50</number>
+         </property>
+         <property name="maximum">
+          <number>50</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
        <widget class="QGroupBox" name="groupPlay">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -283,6 +324,9 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
+        <zorder>bPlay</zorder>
+        <zorder>sSpeed</zorder>
+        <zorder>groupTension</zorder>
        </widget>
       </item>
       <item>
@@ -340,6 +384,9 @@
           <string>Delete</string>
          </property>
         </widget>
+        <zorder>bAdd</zorder>
+        <zorder>bDelete</zorder>
+        <zorder>groupPlay</zorder>
        </widget>
       </item>
       <item>

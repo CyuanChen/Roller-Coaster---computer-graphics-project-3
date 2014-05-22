@@ -32,6 +32,8 @@ AppMain::AppMain(QWidget *parent)
 	connect( ui.bAdd		,SIGNAL(clicked()),this,SLOT(AddControlPoint())					);
 	connect( ui.bDelete		,SIGNAL(clicked()),this,SLOT(DeleteControlPoint())				);
 	
+	connect( ui.sTension    ,SIGNAL(valueChanged(int)),this,SLOT(ChangeTensionOfTrack(int)) );
+
 	connect(&rt,SIGNAL(nextFrame()),this,SLOT(CallNextFrame()),Qt::BlockingQueuedConnection);
 
 	rt.start();
@@ -349,4 +351,11 @@ void AppMain::UpdateTrackState( int index )
 	ui.aLine ->setChecked( (index==0)?true:false );
 	ui.aTrack->setChecked( (index==1)?true:false );
 	ui.aRoad ->setChecked( (index==2)?true:false );
+}
+
+void AppMain::ChangeTensionOfTrack( int val )
+{
+	m_rollerCoaster->tension = m_rollerCoaster->MAX_TENSION_VALUE * float(val) / 100.0f;
+	
+	m_rollerCoaster->bReplan = true;
 }

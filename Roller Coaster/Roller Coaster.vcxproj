@@ -99,6 +99,7 @@
     </ClCompile>
     <ClCompile Include="Src\AppMain.cpp" />
     <ClCompile Include="Src\ControlPoint.cpp" />
+    <ClCompile Include="Src\Cuboid.cpp" />
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\ObjectControl.cpp" />
     <ClCompile Include="Src\OgreRenderThread.cpp" />
@@ -122,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_AppMain.h" />
     <ClInclude Include="Include\ControlPoint.h" />
+    <ClInclude Include="Include\Cuboid.h" />
     <ClInclude Include="Include\Matrix.h" />
     <ClInclude Include="Include\ObjectControl.h" />
     <CustomBuild Include="Include\OgreRenderThread.h">
