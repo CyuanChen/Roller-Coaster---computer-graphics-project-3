@@ -1,0 +1,339 @@
+material 1400791862_1_材料12
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.643137254901961 0.431372549019608 0.0627450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 22.2047244094488, 11.1023622047244
+      texture_unit
+      {
+        texture 1400791862_2_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400791862_2_顏色_002
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.776470588235294 0.776470588235294 0.776470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_3_材料11
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.447058823529412 0.211764705882353 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 27.7165354330709, 13.8582677165354
+      texture_unit
+      {
+        texture 1400791862_10_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400791862_4_<Burnt_Umber>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.305882352941176 0.12156862745098 0.117647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_5_<Pale_Brown>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.831372549019608 0.654901960784314 0.423529411764706
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_6_Textile_Leaves_Green
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.619607843137255 0.627450980392157 0.384313725490196
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 15.0, 15.0
+      texture_unit
+      {
+        texture 1400791862_1_Textile_Leaves_Green.jpg
+      }
+    }
+  }
+}
+material 1400791862_7_<glassreflections2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.572549019607843 0.76078431372549 0.674509803921569
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 102.0, 102.0
+      texture_unit
+      {
+        texture 1400791862_6_GlassReflections_SereneGreen.jpg
+      }
+    }
+  }
+}
+material 1400791862_8_材料5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.949019607843137 0.847058823529412 0.0235294117647059
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_9_材料10
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.643137254901961 0.431372549019608 0.0627450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 27.7165354330709, 13.8582677165354
+      texture_unit
+      {
+        texture 1400791862_4_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400791862_10_Wood_Cherry_Original
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.266666666666667 0.156862745098039 0.0823529411764706
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400791862_5_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400791862_11_Wood_Floor_Dark
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.6 0.368627450980392 0.164705882352941
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 120.0, 48.0
+      texture_unit
+      {
+        texture 1400791862_3_Wood_Floor_Dark.jpg
+      }
+    }
+  }
+}
+material 1400791862_12_材料13
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.447058823529412 0.211764705882353 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 19.0551181102362, 9.52755905511811
+      texture_unit
+      {
+        texture 1400791862_7_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400791862_13_材料4
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.949019607843137 0.105882352941176 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_14_材料14
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.643137254901961 0.431372549019608 0.0627450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 15.9055118110236, 7.95275590551181
+      texture_unit
+      {
+        texture 1400791862_8_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400791862_15_材料2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.858823529411765 0.298039215686275 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_16_材料3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.858823529411765 0.643137254901961 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_17_Wood_Floor_Light
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.498039215686275 0.329411764705882 0.27843137254902
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 120.0, 48.0
+      texture_unit
+      {
+        texture 1400791862_9_Wood_Floor_Light.jpg
+      }
+    }
+  }
+}
+material 1400791862_18_<Black>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_19_材料1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.949019607843137 0.525490196078431 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_20_顏色_C04
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.8 0.6
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400791862_21_材料7
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_check on
+      depth_write off
+      ambient 0.0 0.0 0.0 0.42
+      diffuse 0.949019607843137 0.847058823529412 0.0235294117647059 0.42
+      specular 0.0 0.0 0.0 0.42 0.0
+      emissive 0.0 0.0 0.0 1.0
+    }
+  }
+}
+material 1400791862_SketchupDefault
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 1.0 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}

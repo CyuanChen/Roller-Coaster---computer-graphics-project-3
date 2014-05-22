@@ -19,6 +19,9 @@ public:
 	// for object control
 	ObjectControl* objControl;
 
+	// other decoration
+	Ogre::SceneNode* roomNode;
+
 	// train
 	bool bRun;														// enable to run the train
 	float trainU;													// where the train is in parameter space

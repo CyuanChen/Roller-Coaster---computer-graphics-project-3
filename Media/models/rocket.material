@@ -1,0 +1,416 @@
+material 1400786933_1_0039_深橘色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.549019607843137 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_2_材料12
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.780392156862745 0.780392156862745 0.788235294117647
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 3.2, 12.0
+      texture_unit
+      {
+        texture 1400786933_1_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_3_black
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_4_材料20
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.231372549019608 0.231372549019608 0.247058823529412
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 1.37931034482759, 8.0
+      texture_unit
+      {
+        texture 1400786933_2_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_5_材料11
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.796078431372549 0.796078431372549 0.796078431372549
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 123.315789473684, 146.4375
+      texture_unit
+      {
+        texture 1400786933_5_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_6_<Charcoal>1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.137254901960784 0.137254901960784 0.137254901960784
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_7_材料13
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.537254901960784 0.529411764705882 0.525490196078431
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 0.708661417322835, 90.0
+      texture_unit
+      {
+        texture 1400786933_6_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_8_材料15
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0862745098039216 0.0862745098039216 0.0980392156862745
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 16.1861861861862, 98.0
+      texture_unit
+      {
+        texture 1400786933_4_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_9_材料19
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.172549019607843 0.16078431372549 0.0666666666666667
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 2.28571428571429, 8.0
+      texture_unit
+      {
+        texture 1400786933_7_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_10_材料14
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.372549019607843 0.368627450980392 0.376470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 11.8, 2.0
+      texture_unit
+      {
+        texture 1400786933_8_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_11_<LightGray>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.662745098039216 0.662745098039216 0.662745098039216
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_12_材料17
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.101960784313725 0.101960784313725 0.105882352941176
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 68.3636363636364, 8.0
+      texture_unit
+      {
+        texture 1400786933_10_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_13_0020_紅色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_14_材料2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.874509803921569 0.874509803921569 0.874509803921569
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 912.0, 146.433802816901
+      texture_unit
+      {
+        texture 1400786933_9_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_15_[Translucent_Glass_Gray]1
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_check on
+      depth_write off
+      ambient 0.0 0.0 0.0 0.5
+      diffuse 0.501960784313725 0.501960784313725 0.501960784313725 0.5
+      specular 0.0 0.0 0.0 0.5 0.0
+      emissive 0.0 0.0 0.0 1.0
+    }
+  }
+}
+material 1400786933_16_材料9
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.545098039215686 0.537254901960784 0.545098039215686
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 73.0, 130.0
+      texture_unit
+      {
+        texture 1400786933_14_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_17_材料10
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.654901960784314 0.650980392156863 0.666666666666667
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 11.8, 2.0
+      texture_unit
+      {
+        texture 1400786933_12_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_18_0137_黑色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_19_材料18
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.164705882352941 0.145098039215686 0.129411764705882
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 131.0, 33.5619834710744
+      texture_unit
+      {
+        texture 1400786933_15_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_20_顏色_000
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 1.0 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_21_材料16
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.494117647058824 0.505882352941176 0.474509803921569
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 15.2727272727273, 96.0
+      texture_unit
+      {
+        texture 1400786933_3_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_22_材料21
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.356862745098039 0.274509803921569 0.2
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_23_0135_深灰色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.176470588235294 0.176470588235294 0.176470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786933_24_材料1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.682352941176471 0.682352941176471 0.690196078431373
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 12.0, 7.28571428571428
+      texture_unit
+      {
+        texture 1400786933_13_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_25_材料3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.43921568627451 0.431372549019608 0.427450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 250.0, 90.7142857142857
+      texture_unit
+      {
+        texture 1400786933_11_rocket.jpg
+      }
+    }
+  }
+}
+material 1400786933_SketchupDefault
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 1.0 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}

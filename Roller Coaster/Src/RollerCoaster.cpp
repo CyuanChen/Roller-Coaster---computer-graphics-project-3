@@ -63,9 +63,20 @@ void RollerCoaster::initTrain()
 	bRun = false;
 	trainU = 0.0;
 	trainNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	Ogre::Entity* ent = mSceneMgr->createEntity( "ogrehead.mesh" );
+	roomNode  = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+
+	// Ogre::Entity* ent = mSceneMgr->createEntity( "ogheadre.mesh" );
+	Ogre::Entity* ent = mSceneMgr->createEntity( "trainnode.mesh" );
+	Ogre::Entity* roomEntity = mSceneMgr->createEntity("childroom.mesh");
+
 	trainNode->attachObject( ent );
-	trainNode->setScale( 0.1, 0.1, 0.1 );
+	roomNode->attachObject(roomEntity);
+
+	// trainNode->setScale( 0.1, 0.1, 0.1 );
+	trainNode->setScale(0.5, 0.5, 0.5);
+	trainNode->yaw(Ogre::Degree(-90), Ogre::Node::TS_LOCAL);
+
+	roomNode->setScale(25, 25, 25);
 }
 //-------------------------------------------------------------------------------------
 bool RollerCoaster::Querytest()
@@ -118,8 +129,8 @@ void RollerCoaster::initCamera()
 	mCamTopNode->pitch( Ogre::Degree(-90) );
 
 	//** 第三種:以火車為視角的相機 **//
-	mCamTrainNode = trainNode->createChildSceneNode( "CamTrainNode", Ogre::Vector3(0, 25, 46) );
-	mCamTrainNode->lookAt( Ogre::Vector3(0, 0, 300), Ogre::Node::TS_LOCAL );
+	mCamTrainNode = trainNode->createChildSceneNode( "CamTrainNode", Ogre::Vector3(0, 15, -70) );
+	mCamTrainNode->lookAt( Ogre::Vector3(0, 0, 100), Ogre::Node::TS_LOCAL );
 }
 
 //-------------------------------------------------------------------------------------
@@ -153,7 +164,7 @@ void RollerCoaster::initTerrain()
 
 	Ogre::Entity* entGround = mSceneMgr->createEntity( "GroundEntity", "ground" );
 	mSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode")->attachObject( entGround );
-	entGround->setMaterialName( "Grass" );
+	// entGround->setMaterialName( "Grass" );
 	entGround->setCastShadows( false );
 }
 
@@ -234,7 +245,11 @@ void RollerCoaster::updateTrain( float deltatime )
 	int idx_cur = trainU * (CPtrain.size() - 1);
 
 	Ogre::Vector3 pos( CPtrain[idx_cur].pos );
-	trainNode->setPosition(pos);
+
+	// fix trainmesh position
+	Ogre::Vector3 newPos(pos.x+1, pos.y-0.5, pos.z);
+
+	trainNode->setPosition(newPos);
 
 	if (idx_pre != idx_cur) 
 	{

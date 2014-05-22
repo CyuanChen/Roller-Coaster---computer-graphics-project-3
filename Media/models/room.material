@@ -1,0 +1,1146 @@
+material 1400786802_1_[Color_A05]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0705882352941176 0.235294117647059 0.576470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_2_顏色_E01
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.843137254901961 0.101960784313725
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_3_[Color_A06]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.576470588235294 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_4_<LightGray>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.662745098039216 0.662745098039216 0.662745098039216
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_5_[Color_006]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.337254901960784 0.0509803921568627 0.0431372549019608
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_6_[Wood_Cherry_Original]5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.596078431372549 0.337254901960784 0.164705882352941
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_26_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_7_[Wood_Cherry_Original]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.819607843137255 0.796078431372549 0.733333333333333
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_27_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_8_顏色_A06
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.647058823529412 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_9_[Carpet_Plush_Charcoal]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.572549019607843 0.588235294117647 0.63921568627451
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 77.0, 77.0
+      texture_unit
+      {
+        texture 1400786802_3_Carpet_Plush_Charcoal.jpg
+      }
+    }
+  }
+}
+material 1400786802_10_地毯_柏柏爾_圖案_灰色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0274509803921569 0.368627450980392 0.607843137254902
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 10.0, 10.0
+      texture_unit
+      {
+        texture 1400786802_18_Carpet_Berber_Pattern_Gray.jpg
+      }
+    }
+  }
+}
+material 1400786802_11_[Tile_Ceramic_Multi]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.109803921568627 0.0745098039215686 0.0549019607843137
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 48.0, 32.0
+      texture_unit
+      {
+        texture 1400786802_11_Tile_Ceramic_Multi.jpg
+      }
+    }
+  }
+}
+material 1400786802_12_[Wood_Cherry_Original]4
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.596078431372549 0.337254901960784 0.164705882352941
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_7_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_13_[Color_A06]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.588235294117647 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_14_[Wood_Cherry_Original]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.596078431372549 0.180392156862745 0.164705882352941
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_19_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_15_顏色_006
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.788235294117647 0.705882352941177 0.505882352941176
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_16_[Wood_Cherry_Original]3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.764705882352941 0.650980392156863 0.47843137254902
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_2_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_17_地毯_圖案_葉正方形_棕褐色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.529411764705882 0.447058823529412 0.364705882352941
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 8.0, 8.0
+      texture_unit
+      {
+        texture 1400786802_12_Carpet_Pattern_LeafSquares_Tan.jpg
+      }
+    }
+  }
+}
+material 1400786802_18_96,96,96
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.376470588235294 0.376470588235294 0.376470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_19_[Color_A01]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.254901960784314 0.615686274509804 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_20_[Color_A05]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.517647058823529 0.168627450980392 0.0509803921568627
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_21_木地板_亮
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.8 0.690196078431373 0.498039215686275
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 120.0, 48.0
+      texture_unit
+      {
+        texture 1400786802_4_Wood_Floor_Light.jpg
+      }
+    }
+  }
+}
+material 1400786802_22_顏色_J01
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.286274509803922 0.356862745098039 0.454901960784314
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 121.605691056911, 155.0
+      texture_unit
+      {
+        texture 1400786802_31_cowbo.jpg
+      }
+    }
+  }
+}
+material 1400786802_23_[Wood_Floor_Light]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.8 0.690196078431373 0.498039215686275
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 120.0, 48.0
+      texture_unit
+      {
+        texture 1400786802_5_Wood_Floor_Light.jpg
+      }
+    }
+  }
+}
+material 1400786802_24_[Color_A01]3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.819607843137255 0.12156862745098 0.0392156862745098
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_25_[Carpet_Loop_Pattern]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0862745098039216 0.101960784313725 0.137254901960784
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 12.0, 12.0
+      texture_unit
+      {
+        texture 1400786802_13_Carpet_Loop_Pattern.jpg
+      }
+    }
+  }
+}
+material 1400786802_26_<Beige>1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.345098039215686 0.490196078431373 0.658823529411765
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 77.0, 77.0
+      texture_unit
+      {
+        texture 1400786802_22_toystory.jpg
+      }
+    }
+  }
+}
+material 1400786802_27_顏色_A05
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.223529411764706 0.254901960784314 0.588235294117647
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_28_覆層材料_外飾_白色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.784313725490196 0.733333333333333 0.643137254901961
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 18.0, 27.0
+      texture_unit
+      {
+        texture 1400786802_25_Cladding_Stucco_White.jpg
+      }
+    }
+  }
+}
+material 1400786802_29_百葉_窗布_水平
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.768627450980392 0.686274509803922 0.490196078431373
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 88.0, 88.0
+      texture_unit
+      {
+        texture 1400786802_17_Blinds_Cloth_Horizontal.jpg
+      }
+    }
+  }
+}
+material 1400786802_30_顏色_A12
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.6 0.117647058823529 0.117647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_31_[Metal_Corrogated_Shiny]5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.47843137254902 0.415686274509804 0.415686274509804
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 196.850393700787, 196.850393700787
+      texture_unit
+      {
+        texture 1400786802_24_Metal_Corrogated_Shiny.jpg
+      }
+    }
+  }
+}
+material 1400786802_32_[Color_A06]3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.8 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_33_[Color_003]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.623529411764706 0.6 0.596078431372549
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 26.0, 50.304347826087
+      texture_unit
+      {
+        texture 1400786802_29_wopody.jpg
+      }
+    }
+  }
+}
+material 1400786802_34_顏色_A03
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.698039215686274 0.537254901960784 0.301960784313725
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_35_地毯_長毛絨_黑色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.176470588235294 0.345098039215686 0.498039215686275
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 77.0, 77.0
+      texture_unit
+      {
+        texture 1400786802_9_Carpet_Plush_Charcoal.jpg
+      }
+    }
+  }
+}
+material 1400786802_36_顏色_009
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_37_顏色_A04
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.356862745098039 0.631372549019608
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_38_0135_深灰色
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.317647058823529 0.317647058823529 0.317647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_39_顏色_003
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.768627450980392 0.768627450980392 0.768627450980392
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_40_顏色_B01
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.56078431372549 0.152941176470588
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_41_[Color_006]3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.87843137254902 0.772549019607843 0.517647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_42_[Color_A01]6
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_43_<Charcoal>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.137254901960784 0.137254901960784 0.137254901960784
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_44_jean_blue
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.141176470588235 0.184313725490196 0.258823529411765
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_45_顏色_000
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.576470588235294 0.376470588235294 0.392156862745098
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 33.0, 21.9689703808181
+      texture_unit
+      {
+        texture 1400786802_21_flaggg.jpg
+      }
+    }
+  }
+}
+material 1400786802_46_顏色_002
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.776470588235294 0.776470588235294 0.776470588235294
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_47_[Color_A05]3
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.752941176470588 1.0 0.407843137254902
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_48_原櫻桃木
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.43921568627451 0.247058823529412 0.12156862745098
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 72.0, 72.0
+      texture_unit
+      {
+        texture 1400786802_8_Wood_Cherry_Original.jpg
+      }
+    }
+  }
+}
+material 1400786802_49_半透明_玻璃_天空_倒影
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_check on
+      depth_write off
+      ambient 0.0 0.0 0.0 0.37
+      diffuse 0.568627450980392 0.603921568627451 0.717647058823529 0.37
+      specular 0.0 0.0 0.0 0.37 0.0
+      emissive 0.0 0.0 0.0 1.0
+      // texture size: 660.0, 660.0
+      texture_unit
+      {
+        texture 1400786802_1_Translucent_Glass_Sky_Reflection_.jpg
+      }
+    }
+  }
+}
+material 1400786802_50_[Color_A05]5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.717647058823529 0.541176470588235 0.427450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 33.0, 41.316
+      texture_unit
+      {
+        texture 1400786802_6_wehrfff.jpg
+      }
+    }
+  }
+}
+material 1400786802_51_[Cladding_Stucco_White]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.768627450980392 0.725490196078431 0.643137254901961
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 18.0, 27.0
+      texture_unit
+      {
+        texture 1400786802_23_Cladding_Stucco_White.jpg
+      }
+    }
+  }
+}
+material 1400786802_52_[Carpet_Loop_Pattern]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.650980392156863 0.568627450980392 0.415686274509804
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 12.0, 12.0
+      texture_unit
+      {
+        texture 1400786802_30_Carpet_Loop_Pattern.jpg
+      }
+    }
+  }
+}
+material 1400786802_53_[Color_A01]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.576470588235294 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_54_顏色_D06
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.8 0.533333333333333 0.12156862745098
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_55_[Carpet_Berber_Pattern_Gray]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0509803921568627 0.207843137254902 0.317647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 10.0, 10.0
+      texture_unit
+      {
+        texture 1400786802_14_Carpet_Berber_Pattern_Gray.jpg
+      }
+    }
+  }
+}
+material 1400786802_56_[Color_A05]4
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.737254901960784 0.580392156862745 0.415686274509804
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_57_[Color_A01]5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.768627450980392 0.949019607843137 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_58_木_接合
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.149019607843137 0.317647058823529 0.105882352941176
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 60.0, 30.0
+      texture_unit
+      {
+        texture 1400786802_16_Wood_Lumber_ButtJoined.jpg
+      }
+    }
+  }
+}
+material 1400786802_59_瓷磚_石灰華_2_英寸
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.32156862745098 0.341176470588235 0.341176470588235
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 97.0, 119.417777777778
+      texture_unit
+      {
+        texture 1400786802_28_space.jpg
+      }
+    }
+  }
+}
+material 1400786802_60_[Color_006]4
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.819607843137255 0.733333333333333 0.482352941176471
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_61_顏色_A01
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.388235294117647 0.164705882352941 0.0666666666666667
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_62_瓷磚_陶瓷_自然
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.211764705882353 0.36078431372549 0.407843137254902
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 250.0, 284.730538922156
+      texture_unit
+      {
+        texture 1400786802_20_beyond.jpg
+      }
+    }
+  }
+}
+material 1400786802_63_顏色_A16
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.4 0.0 0.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_64_[Color_A01]4
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 0.450980392156863 0.227450980392157
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_65_<Redwood>
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.654901960784314 0.396078431372549 0.32156862745098
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_66_[Color_006]5
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.0823529411764706 0.227450980392157 0.141176470588235
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_67_顏色_A21
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.125490196078431 0.2 0.141176470588235
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_68_[Color_006]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.109803921568627 0.109803921568627 0.109803921568627
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_69_籬笆_菱形_網孔
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.337254901960784 0.372549019607843 0.937254901960784
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 7.0, 3.3504275336986
+      texture_unit
+      {
+        texture 1400786802_15_Fencing_Diamond_Mesh.png
+      }
+    }
+  }
+}
+material 1400786802_70_草圖_木瓦_鄉村
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.517647058823529 0.298039215686275 0.145098039215686
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+      // texture size: 24.0, 24.0
+      texture_unit
+      {
+        texture 1400786802_10_Sketchy_Shingles_Rustic.jpg
+      }
+    }
+  }
+}
+material 1400786802_71_顏色_B24
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.2 0.137254901960784 0.117647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_72_顏色_007
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.67843137254902 0.533333333333333 0.329411764705882
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_73_[Color_003]2
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.666666666666667 0.666666666666667 0.666666666666667
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_74_[Color_000]1
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 1.0 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_75_顏色_008
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 0.117647058823529 0.117647058823529 0.117647058823529
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
+material 1400786802_SketchupDefault
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.0 0.0 0.0
+      diffuse 1.0 1.0 1.0
+      specular 0.0 0.0 0.0 0.0
+      emissive 0.0 0.0 0.0
+    }
+  }
+}
