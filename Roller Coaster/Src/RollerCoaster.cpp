@@ -1,10 +1,13 @@
-#include "RollerCoaster.h"
+ï»¿#include "RollerCoaster.h"
 #include "AppMain.h"
 #include "OgreMovableObject.h"
 #include "Matrix.h"
 #include <stdio.h>
 #include <string>
 #include <vector>
+
+#define FLOW_SPEED 0.4
+#define FLOW_HEIGHT 50
 
 //-------------------------------------------------------------------------------------
 RollerCoaster::RollerCoaster(void):
@@ -24,7 +27,7 @@ bReplan(false)
 	ROT_SCALE			= Ogre::Degree(30.0f);
 	mDirection			= Ogre::Vector3::ZERO;
 	trainSpeed			= 7;
-	MAX_TRAIN_SPEED		= 20;
+	MAX_TRAIN_SPEED		= 30;
 	setFocusPolicy( Qt::ClickFocus );
 	tension             = 0;
 	MAX_TENSION_VALUE   = 10;
@@ -42,6 +45,7 @@ void RollerCoaster::initSceneManager()
 	mSceneMgr = mRoot->createSceneManager( Ogre::ST_GENERIC );
 	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 	Ogre::MovableObject::setDefaultQueryFlags(ObjectControl::OTHERS);
+	mSceneMgr->setSkyBox("true","Examples/SpaceSkyBox",10);
 }
 
 //-------------------------------------------------------------------------------------
@@ -106,29 +110,29 @@ bool RollerCoaster::Querytest()
 //-------------------------------------------------------------------------------------
 void RollerCoaster::initCamera()
 {
-	//==== ¨Ï¥Î SceneManager ³Ð«Ø¬Û¾÷ª«¥ó ====//
+	//==== Â¨ÃÂ¥ÃŽ SceneManager Â³ÃÂ«Ã˜Â¬Ã›Â¾Ã·ÂªÂ«Â¥Ã³ ====//
 	mCamera = mSceneMgr->createCamera( "PlayerCam" );
 
-	//==== ³]©w¬Û¾÷ªº Near plane ¤Î Far plane ====//
+	//==== Â³]Â©wÂ¬Ã›Â¾Ã·ÂªÂº Near plane Â¤ÃŽ Far plane ====//
 	mCamera->setNearClipDistance( 5 );
 	mCamera->setFarClipDistance( 5000 );
 
 	mViewport = mWindow->addViewport( mCamera );
 	mViewport->setBackgroundColour( Ogre::ColourValue(0.5,0.5,0.5) );
 
-	//==== ³Ð«Ø¤TºØ§Î¦¡ªº¬Û¾÷ SceneNode ====//
+	//==== Â³ÃÂ«Ã˜Â¤TÂºÃ˜Â§ÃŽÂ¦Â¡ÂªÂºÂ¬Ã›Â¾Ã· SceneNode ====//
 
-	//** ²Ä¤@ºØ:¥@¬É®y¼Ð¤Uªº¬Û¾÷ **//
+	//** Â²Ã„Â¤@ÂºÃ˜:Â¥@Â¬Ã‰Â®yÂ¼ÃÂ¤UÂªÂºÂ¬Ã›Â¾Ã· **//
 	currCamType = eWorld;
 	mCamWorldNode = mSceneMgr->getRootSceneNode()->createChildSceneNode( "CamWorldNode", Ogre::Vector3(0, 100, 100) );
 	mCamWorldNode->pitch( Ogre::Degree(-30) );
 	mCamWorldNode->attachObject( mCamera );
 
-	//** ²Ä¤GºØ:¥Ñ¤W©¹¤U­ÁÀýªº¬Û¾÷ **//
+	//** Â²Ã„Â¤GÂºÃ˜:Â¥Ã‘Â¤WÂ©Â¹Â¤UÂ­ÃÃ€Ã½ÂªÂºÂ¬Ã›Â¾Ã· **//
 	mCamTopNode = mSceneMgr->getRootSceneNode()->createChildSceneNode( "CamTopNode", Ogre::Vector3(0,600,0) );
 	mCamTopNode->pitch( Ogre::Degree(-90) );
 
-	//** ²Ä¤TºØ:¥H¤õ¨®¬°µø¨¤ªº¬Û¾÷ **//
+	//** Â²Ã„Â¤TÂºÃ˜:Â¥HÂ¤ÃµÂ¨Â®Â¬Â°ÂµÃ¸Â¨Â¤ÂªÂºÂ¬Ã›Â¾Ã· **//
 	mCamTrainNode = trainNode->createChildSceneNode( "CamTrainNode", Ogre::Vector3(0, 15, -70) );
 	mCamTrainNode->lookAt( Ogre::Vector3(0, 0, 100), Ogre::Node::TS_LOCAL );
 }
@@ -136,24 +140,24 @@ void RollerCoaster::initCamera()
 //-------------------------------------------------------------------------------------
 void RollerCoaster::initLight()
 {
-	//==== ³]¸mÀô¹Ò¥ú ====//
+	//==== Â³]Â¸mÃ€Ã´Â¹Ã’Â¥Ãº ====//
 	mSceneMgr->setAmbientLight( Ogre::ColourValue(0.5, 0.5, 0.5) );
 
-	//==== ³]©w³±¼v«¬ºA ====//
+	//==== Â³]Â©wÂ³Â±Â¼vÂ«Â¬ÂºA ====//
 	mSceneMgr->setShadowTechnique( Ogre::SHADOWTYPE_STENCIL_ADDITIVE );
 
-	//==== ¥[¤J²Ä¤@­Ó¿O·½ ====//
+	//==== Â¥[Â¤JÂ²Ã„Â¤@Â­Ã“Â¿OÂ·Â½ ====//
 	Ogre::Light* light = mSceneMgr->createLight( "MainLight" );
 	light->setPosition( 120, 1000, -250 );
 	light->setCastShadows( true );
 	light->setDiffuseColour(0.953, 0.635, 0.196);
 
-	Ogre::Light* pointLight = mSceneMgr->createLight("pointLight");
-    pointLight->setType(Ogre::Light::LT_POINT);
-    pointLight->setPosition(Ogre::Vector3(0, 1, 0));
+	// Ogre::Light* pointLight = mSceneMgr->createLight("pointLight");
+ //    pointLight->setType(Ogre::Light::LT_POINT);
+ //    pointLight->setPosition(Ogre::Vector3(0, 1, 0));
  
-    pointLight->setDiffuseColour(0.8, 0.8, 0.8);
-    pointLight->setSpecularColour(0.6, 0.5, 0.6);
+ //    pointLight->setDiffuseColour(0.8, 0.8, 0.8);
+ //    pointLight->setSpecularColour(0.6, 0.5, 0.6);
 
 	// Let's play light magic Yeah
 	Ogre::Light* spotlight = mSceneMgr->createLight("spotlight");
@@ -163,12 +167,17 @@ void RollerCoaster::initLight()
     // spotlight->setSpecularColour(0.953, 0.635, 0.196);
     spotlight->setDirection(0, -1, 0);
     spotlight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
+
+    Ogre::Light* pLight = mSceneMgr->createLight("DirLight");
+	pLight->setType( Ogre::Light::LT_DIRECTIONAL );
+	pLight->setDirection( 0, -100, 0 );
+	
 }
 
 //-------------------------------------------------------------------------------------
 void RollerCoaster::initTerrain()
 {
-	//==== ¥Î¤@­Ó¥­­±·í§@¦a§Î ====//
+	//==== Â¥ÃŽÂ¤@Â­Ã“Â¥Â­Â­Â±Â·Ã­Â§@Â¦aÂ§ÃŽ ====//
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 
 	Ogre::MeshManager::getSingleton().createPlane(
@@ -179,10 +188,16 @@ void RollerCoaster::initTerrain()
 		Ogre::Vector3::UNIT_Z
 	);
 
-	Ogre::Entity* entGround = mSceneMgr->createEntity( "GroundEntity", "ground" );
-	mSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode")->attachObject( entGround );
+	// Ogre::Entity* entGround = mSceneMgr->createEntity( "GroundEntity", "ground" );
+	// mSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode")->attachObject( entGround );
 	// entGround->setMaterialName( "Grass" );
-	entGround->setCastShadows( false );
+	// entGround->setCastShadows( false );
+
+
+	Ogre::Entity* pWaterEntity = mSceneMgr->createEntity("water", "ground");
+	mSceneMgr->getRootSceneNode()->createChildSceneNode("groundNode")->attachObject( pWaterEntity );
+	pWaterEntity->setMaterialName( "Examples/WaterStream" );
+	pWaterEntity->setCastShadows( false );	
 }
 
 //-------------------------------------------------------------------------------------
@@ -206,6 +221,16 @@ void RollerCoaster::createScene( void )
 	// snTar->attachObject(enTar);
 	// snTar->setPosition(0, 0, 50);
 	// snTar->setScale(0.1, 0.1, 0.1);
+
+	// Ogre::TexturePtr tex = TextureManager::getSingleton().createManual("RttTex", 
+	//     ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D, w, h, 0, 
+	//     PF_R8G8B8, TU_RENDERTARGET);
+
+	// RenderTarget* rtt = tex->getBuffer()->getRenderTarget();
+	// rtt->addViewport(mCamera); 
+	// rtt->getViewport(0)->setOverlaysEnabled(false);
+	// rtt->addListener(this);
+
 }
 
 //-------------------------------------------------------------------------------------
@@ -216,7 +241,7 @@ bool RollerCoaster::frameRenderingQueued( const Ogre::FrameEvent& evt )
 		trainNode->translate(trainNode->_getDerivedOrientation() *Ogre::Vector3::UNIT_Z *evt.timeSinceLastFrame);
 	}
 
-	//==== §ó·s¬Û¾÷¦ì¸m ====//
+	//==== Â§Ã³Â·sÂ¬Ã›Â¾Ã·Â¦Ã¬Â¸m ====//
 	if( mDirection!=Ogre::Vector3(0,0,0) && currCamType == eWorld )
 	{
 		mCamWorldNode->translate( mDirection * evt.timeSinceLastFrame, Ogre::Node::TS_LOCAL );
@@ -239,12 +264,12 @@ bool RollerCoaster::frameRenderingQueued( const Ogre::FrameEvent& evt )
 //-------------------------------------------------------------------------------------
 void RollerCoaster::updateTrain( float deltatime )
 {
-	//==== ¦pªG²{¦b¬O¼È°±ª¬ºA©ÎªÌ­y¹D¬OªÅªº«h¤°»ò¤]¤£°µ ====//
+	//==== Â¦pÂªGÂ²{Â¦bÂ¬OÂ¼ÃˆÂ°Â±ÂªÂ¬ÂºAÂ©ÃŽÂªÃŒÂ­yÂ¹DÂ¬OÂªÃ…ÂªÂºÂ«hÂ¤Â°Â»Ã²Â¤]Â¤Â£Â°Âµ ====//
 	if( !bRun || CPtrain.empty() ) return;
 
 	float tmpU = trainU;
 
-	float oldspeed=15;
+	float oldspeed=20;
 	float height= trainNode->getPosition().y;
 	
 	trainSpeed=oldspeed-sqrt(4.9*height);
@@ -270,7 +295,7 @@ void RollerCoaster::updateTrain( float deltatime )
 
 	if (idx_pre != idx_cur) 
 	{
-		// Train Head orientation ¤õ¨®ÀY¦ì¸m²¾°Ê
+		// Train Head orientation Â¤ÃµÂ¨Â®Ã€YÂ¦Ã¬Â¸mÂ²Â¾Â°ÃŠ
 		Ogre::Vector3 front, up, left;
 		front = CPtrain[idx_cur].pos - CPtrain[idx_pre].pos;
 		up = CPtrain[idx_cur].orient;
@@ -310,7 +335,7 @@ void RollerCoaster::mouseMoveEvent( QMouseEvent *event )
 			}
 		}
 	}
-	//==== ·í«ö¤U·Æ¹«¥kÁä ====//
+	//==== Â·Ã­Â«Ã¶Â¤UÂ·Ã†Â¹Â«Â¥kÃÃ¤ ====//
 	if( event->buttons().testFlag(Qt::RightButton) && lastPos != invalidMousePoint )
 	{
 		if( currCamType != eWorld ) return;
@@ -495,6 +520,25 @@ bool RollerCoaster::frameEnded( const Ogre::FrameEvent& evt )
 //-------------------------------------------------------------------------------------
 bool RollerCoaster::frameStarted( const Ogre::FrameEvent& evt )
 {
+	float fWaterFlow = FLOW_SPEED * evt.timeSinceLastFrame;
+	static float fFlowAmount = 0.1f;
+	static bool fFlowUp = true;
+	Ogre::SceneNode *pWaterNode = static_cast<Ogre::SceneNode*>(
+	    mCamera->getSceneManager()->getRootSceneNode()->getChild("groundNode"));
+	if(pWaterNode)
+	{
+	    if(fFlowUp)
+	        fFlowAmount += fWaterFlow;
+	    else
+	        fFlowAmount -= fWaterFlow;
+	 
+	    if(fFlowAmount >= FLOW_HEIGHT)
+	        fFlowUp = false;
+	    else if(fFlowAmount <= 0.0f)
+	        fFlowUp = true;
+	 
+	    pWaterNode->translate(0, (fFlowUp ? fWaterFlow : -fWaterFlow), 0);
+	}	
 	return true;
 }
 
@@ -767,15 +811,15 @@ void RollerCoaster::planCardinal()
 			Ori[k] = Vector3( mTrack->getItem(idx[k]).orient );
 		}
 
-		float M[4][4] = 
-		{
-			{-1, 2, -1, 0},
-			{3, -5, 0, 2},
-			{-3, 4, 1, 0},
-			{1, -1, 0, 0}
-		};
+		//float M[4][4] = 
+		//{
+		//	{-1, 2, -1, 0},
+		//	{3, -5, 0, 2},
+		//	{-3, 4, 1, 0},
+		//	{1, -1, 0, 0}
+		//};
 
-		// float t = tension;
+		float t = tension;
 
 		// float M[4][4] = 
 		// {
@@ -784,6 +828,15 @@ void RollerCoaster::planCardinal()
 		// 	{ -t,   0 ,   t  ,  0 },
 		// 	{  0,   1 ,   0  ,  0 }
 		// };
+		float s = 0.5 * (1-t);
+
+		float M[4][4] = 
+		{
+			{-s, 2*s, -s, 0},
+			{2-s, s-3, 0, 1},
+			{s-2, 3-2*s, s, 0},
+			{s, -s, 0, 0}
+		};
 
 		// float sum = 0;
 		// for (int j = 0; j < 4; j++)
@@ -794,13 +847,13 @@ void RollerCoaster::planCardinal()
 		// 	}
 		// }
 
-		for (int j = 0; j < 4; j++)
-		{
-			for (int k = 0; k < 4; k++)
-			{
-				M[j][k] /= 2.0;		
-			}
-		}
+		//for (int j = 0; j < 4; j++)
+		//{
+		//	for (int k = 0; k < 4; k++)
+		//	{
+		//		M[j][k] /= 2.0;		
+		//	}
+		//}
 					
 		float segment = 1000;
 

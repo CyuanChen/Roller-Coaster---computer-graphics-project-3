@@ -2,6 +2,7 @@
 
 #include "OgreWidget.h"
 #include "ObjectControl.h"
+#include "OgreRenderTargetListener.h"
 #include "Track.h"
 #include "Cuboid.h"
 
